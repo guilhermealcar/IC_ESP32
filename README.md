@@ -11,19 +11,25 @@ via Bluetooth Classic.
 
 ### Parte1\AcquireSend_ad8232_filtered_2\AcquireSend_ad8232_filtered_2\AcquireSend_ad8232_filtered_2.ino
 
-* 
+* Arduino file which will be executed to configure the ESP-32 hardware together with the AD8232 board in a Protoboard.
+
+### Parte1\receivedFile.py
+
+* Python file that generates "Parte1\pot_data.txt".
+* It takes the muscle contraction values and adds it to the file above.
+
+### Parte1\plotData.py
+
+* Python file that generates different plots.
+* Applies different filters for better data understanding.
+* In the end, Root Mean Square (RMS) values were used to avoid negative values for the muscle contractions.
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* To use the ESP-32, it's necessary to install another driver.
+* You can install the Silicon Labs CP210x USB to UART Bridge (COM3) driver following this tutorial: https://www.driverguide.com/driver/download/Silicon-Labs-CP210x-USB-to-UART-Bridge-(COM3)
 
 ### Executing program
 
@@ -42,5 +48,4 @@ command to run if program contains helper info
 
 ## Author
 
-Guilherme de Almeida do Carmo  
-guiialcar@gmail.com
+Guilherme de Almeida do Carmo - guiialcar@gmail.com
