@@ -9,7 +9,9 @@ via Bluetooth Classic.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+### Parte1\AcquireSend_ad8232_filtered_2\AcquireSend_ad8232_filtered_2\AcquireSend_ad8232_filtered_2.ino
+
+* 
 
 ## Getting Started
 
@@ -42,13 +44,5 @@ command to run if program contains helper info
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
+Guilherme de Almeida do Carmo  
+[email:](guiialcar@gmail.com)
