@@ -43,4 +43,4 @@ command to run if program contains helper info
 ## Author
 
 Guilherme de Almeida do Carmo  
-email: guiialcar@gmail.com
+guiialcar@gmail.com
