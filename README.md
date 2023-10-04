@@ -33,18 +33,13 @@ via Bluetooth Classic.
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* First, run the ino file to setup the ESP-32.
+* After that, run "Parte1\receivedFile.py" to generate the text file that will be plotted with the values.
+** This file will run in an infinite loop until a "CTRL + c" command. This will end the program with the initial counter greater than or equal to 10, printing all of the values into the text file.
 ```
-code blocks for commands
+Ctrl + c -> counter += 10
 ```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+* When "Parte1\plotData.py" is used, various different plots with different filters such as "bandpass", "denoised signal", etc. will appear.
 
 ## Author
 
