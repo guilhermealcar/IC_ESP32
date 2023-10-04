@@ -45,4 +45,4 @@ command to run if program contains helper info
 Contributors names and contact info
 
 Guilherme de Almeida do Carmo  
-[email:](guiialcar@gmail.com)
+[guiialcar@gmail.com]
