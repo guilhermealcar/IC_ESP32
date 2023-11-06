@@ -12,6 +12,7 @@ via Bluetooth Classic.
 ### Parte1\AcquireSend_ad8232_filtered_2\AcquireSend_ad8232_filtered_2\AcquireSend_ad8232_filtered_2.ino
 
 * Arduino file which will be executed to configure the ESP-32 hardware together with the AD8232 board in a Protoboard.
+* This file is now, with a ISR Interrupt with a timer.
 
 ### Parte1\receivedFile.py
 
@@ -22,7 +23,8 @@ via Bluetooth Classic.
 
 * Python file that generates different plots.
 * Applies different filters for better data understanding.
-* In the end, Root Mean Square (RMS) values were used to avoid negative values for the muscle contractions.
+* Root Mean Square (RMS) values were used to avoid negative values for the muscle contractions.
+* In the end, the Bode diagram is also plotted.
 
 ## Getting Started
 
