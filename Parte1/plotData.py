@@ -12,7 +12,7 @@ import pywt
 #%%
 
 # Open the file and skip the first line
-with open(r'C:\Users\guiia\OneDrive\Documentos\IC_4\Parte1\pot_data.txt', 'r') as f:
+with open(r'C:\Users\guiia\OneDrive\Documentos\IC_4\pot_data.txt', 'r') as f:
     f.readline()
 
     # Counts lines
@@ -325,18 +325,59 @@ with open(r'C:\Users\guiia\OneDrive\Documentos\IC_4\Parte1\pot_data.txt', 'r') a
 
     # PLOT THE FFT OF THE SIGNAL MEDIAN FILTERED
     # Perform FFT
-    y_median_filtered_fft = np.fft.fft(y_mf_bandpass)
+    y_mf_bandpass_fft = np.fft.fft(y_mf_bandpass)
 
     # Frequencies corresponding to the FFT coefficients
     sampling_rate = 2000   # Assuming the x-axis is in units of seconds
-    frequencies_median_filtered = np.fft.fftfreq(len(y_mf_bandpass), d=1 / sampling_rate)
+    frequencies_mf_bandpass = np.fft.fftfreq(len(y_mf_bandpass), d=1 / sampling_rate)
 
     # Plot the FFT magnitude spectrum
     # Plotly
-    fft_df = pd.DataFrame({'Frequency': frequencies_median_filtered, 'Magnitude': np.abs(y_median_filtered_fft)})
+    fft_df = pd.DataFrame({'Frequency': frequencies_mf_bandpass, 'Magnitude': np.abs(y_mf_bandpass_fft)})
     fig = px.line(fft_df, x='Frequency', y='Magnitude', title='FFT')
     fig.update_layout(title_x=0.5, xaxis_title='Frequency', yaxis_title='Magnitude')
     fig.show()
 
 #%%
 # FAZER DIAGRAMA DE BODE E ROTINA DE INTERRUPÇÃO - https://www.youtube.com/watch?v=373k6-KwOEE
+    # Calculate magnitude and phase of the FFT
+    magnitude = np.abs(y_mf_bandpass_fft)
+    phase = np.angle(y_mf_bandpass_fft)
+
+    # Create Bode plots using Plotly
+    fig = sp.make_subplots(rows=2, cols=1, subplot_titles=('Bode Plot - Magnitude', 'Bode Plot - Phase'))
+
+    # Bode Plot - Magnitude
+    magnitude_fig = go.Figure()
+    magnitude_fig.add_trace(go.Scatter(x=frequencies_mf_bandpass, y=20 * np.log10(magnitude), mode='lines', name='Magnitude (dB)'))
+    magnitude_fig.update_layout(title='Bode Plot - Magnitude', xaxis_title='Frequency (Hz)', yaxis_title='Magnitude (dB)')
+    fig.add_trace(magnitude_fig.data[0], row=1, col=1)
+
+    # Bode Plot - Phase
+    phase_fig = go.Figure()
+    phase_fig.add_trace(go.Scatter(x=frequencies_mf_bandpass, y=np.degrees(phase), mode='lines', name='Phase (degrees)'))
+    phase_fig.update_layout(title='Bode Plot - Phase', xaxis_title='Frequency (Hz)', yaxis_title='Phase (degrees)')
+    fig.add_trace(phase_fig.data[0], row=2, col=1)
+
+    # Show the figure
+    fig.update_layout(height=600, width=800, showlegend=False)
+    fig.show()
+
+#%% Matplotlib
+    # Create Bode plots
+    plt.figure()
+    plt.subplot(2, 1, 1)
+    plt.semilogx(frequencies_mf_bandpass, 20 * np.log10(magnitude))
+    plt.title('Bode Plot - Magnitude')
+    plt.ylabel('Magnitude (dB)')
+    plt.grid()
+
+    plt.subplot(2, 1, 2)
+    plt.semilogx(frequencies_mf_bandpass, np.degrees(phase))
+    plt.title('Bode Plot - Phase')
+    plt.xlabel('Frequency (Hz)')
+    plt.ylabel('Phase (degrees)')
+    plt.grid()
+
+    plt.tight_layout()
+    plt.show()
